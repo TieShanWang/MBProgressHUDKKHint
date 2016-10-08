@@ -74,7 +74,7 @@ KKMBSuperTop    const KKMBSuperTopInvalid = -1;
     
     HUD.delegate = [self shareHelper];
     
-    [HUD showAnimated:YES];
+    [HUD show:YES];
 }
 
 +(void)hiddenActivityInView:(UIView*)view{
@@ -303,7 +303,7 @@ KKMBSuperTop    const KKMBSuperTopInvalid = -1;
         for (MBProgressHUD * hud in [MBProgressHUD allHUDsForView:view]) {
             if ([hud.identity isEqualToString:identity]) {
                 hud.removeFromSuperViewOnHide = YES;
-                [hud hideAnimated:YES];
+                [hud hide:YES];
                 break;
             }
         }
@@ -318,37 +318,31 @@ KKMBSuperTop    const KKMBSuperTopInvalid = -1;
     
     HUD.margin = 10;
     
-    HUD.label.font = [UIFont systemFontOfSize:14];
+    HUD.labelFont = [UIFont systemFontOfSize:14];
     
     HUD.identity = identity;
     
     if (title) {
-        HUD.label.text = title;
+        HUD.labelText = title;
     }
-    HUD.bezelView.layer.cornerRadius = 3;
-    
-    HUD.bezelView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f];
-    
-    HUD.label.textColor = [UIColor whiteColor];
+    HUD.cornerRadius = 3;
     
     HUD.userInteractionEnabled = !tapIn;
     
     [view addSubview:HUD];
     
-    CGPoint offset = HUD.offset;
     if (superTop != KKMBSuperTopInvalid) {
-        offset.y = [self setOffSetForTop:superTop viewHeight:view.kk_height];
+        HUD.yOffset = [self setOffSetForTop:superTop viewHeight:view.kk_height];
     }else if (superBot != KKMBSuperBottomInvalid){
-        offset.y = [self setOffSetForBot:superBot viewHeight:view.kk_height];
+        HUD.yOffset = [self setOffSetForBot:superBot viewHeight:view.kk_height];
     }
-    HUD.offset = offset;
     
     HUD.delegate = [self shareHelper];
     
-    [HUD showAnimated:YES];
+    [HUD show:YES];
     
     if (durtion != KKMBDurationForever) {
-        [HUD hideAnimated:YES afterDelay:durtion];
+        [HUD hide:YES afterDelay:durtion];
     }
     
     
