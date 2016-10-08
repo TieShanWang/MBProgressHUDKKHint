@@ -10,8 +10,30 @@
 
 #import "MBHudHelper.h"
 
+#import "MBProgressHUD.h"
+
+#import <objc/runtime.h>
+
 #define HintKscreenWidth [UIScreen mainScreen].bounds.size.width
 #define HintKscreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+
+@interface MBProgressHUD (KKIdentity)
+@property(nonatomic,copy)NSString * identity;//标记身份
+@end
+
+@implementation MBProgressHUD (KKIdentity)
+
+-(void)setIdentity:(NSString *)identity{
+    objc_setAssociatedObject(self, @"identity", identity, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+-(NSString *)identity{
+    return objc_getAssociatedObject(self, @"identity");
+}
+
+@end
 
 @implementation UIView (Hint)
 

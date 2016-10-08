@@ -9,8 +9,15 @@
 #import "MBHudHelper.h"
 #import <objc/runtime.h>
 
+#import "MBProgressHUD.h"
 
 #import "UIView+KKFrame.h"
+
+
+
+@interface MBProgressHUD (KKIdentity)
+@property(nonatomic,copy)NSString * identity;//标记身份
+@end
 
 @implementation MBProgressHUD (KKIdentity)
 

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MBProgressHUD.h"
+#import <UIKit/UIKit.h>
 
+@class MBProgressHUD;
 
 typedef double KKMBDuration;
 typedef double KKMBSuperBottom;
@@ -21,9 +22,6 @@ extern KKMBSuperBottom const KKMBSuperBottomInvalid;
 extern KKMBSuperTop    const KKMBSuperTopInvalid;
 
 
-@interface MBProgressHUD (KKIdentity)
-@property(nonatomic,copy)NSString * identity;//标记身份
-@end
 
 
 @interface MBHudHelper : NSObject
