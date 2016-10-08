@@ -1,0 +1,190 @@
+//
+//  MBHudHelper.m
+//  HudDemo
+//
+//  Created by MR.KING on 16/4/4.
+//  Copyright © 2016年 Matej Bukovinski. All rights reserved.
+//
+
+#import "MBHudHelper.h"
+
+CGFloat HintDefaultDurtion = 2.0f;
+
+@interface MBHudHelper()<MBProgressHUDDelegate>
+
+@end
+
+@implementation MBHudHelper
+
+
+/********************* activity *********************/
++(void)makeActivityWithTitle:(NSString*)title view:(UIView*)view
+{
+    [self makeActivityWithTitle:title view:view  tapIn:NO];
+}
+
+
++(void)makeActivityWithTitle:(NSString*)title view:(UIView*)view tapIn:(BOOL)tapIn{
+    
+    // 移除原来的 所有的 展示
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:view];
+    
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.margin = 10;
+    HUD.labelFont = [UIFont systemFontOfSize:14];
+    if (title) {
+        HUD.labelText = title;
+    }
+    HUD.cornerRadius = 3;
+    HUD.userInteractionEnabled = !tapIn;
+    
+    HUD.square = YES;
+    
+    [view addSubview:HUD];
+    
+    HUD.delegate = [self shareHelper];
+    
+    [HUD show:YES];
+}
+
++(void)hiddenActivityInView:(UIView*)view{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+}
+
++(void)hiddenActivityForView:(UIView*)view{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+}
+
++(void)hiddenActivityForView:(UIView*)view Animated:(BOOL)animation{
+    [MBProgressHUD hideAllHUDsForView:view animated:animation];
+}
+
+
+/********************* window text *********************/
+
++(void)makeVerCodeSendHintOnWindow{
+    [self makeHintOnWindowWithTitle:@"验证码已发送到手机 请注意查看" tapIn:YES];
+}
+
++(void)makeHintOnWindowWithTitle:(NSString*)title
+{
+    [self makeHintOnWindowWithTitle:title durtion:2.0f tapIn:NO];
+}
+
++(void)makeHintOnWindowWithTitle:(NSString*)title tapIn:(BOOL)tapIn{
+    [self makeHintOnWindowWithTitle:title durtion:2.0f tapIn:tapIn];
+}
+
++(void)makeHintOnWindowWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion
+{
+    [self makeHintWithTitle:title view:[UIApplication sharedApplication].keyWindow durtion:durtion tapIn:NO];
+}
+
++(void)makeHintOnWindowWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion tapIn:(BOOL)tapIn{
+    [self makeHintWithTitle:title view:[UIApplication sharedApplication].keyWindow durtion:durtion tapIn:tapIn];
+}
+
++(void)hiddenHUDOnWindow{
+    [self hiddenOnWindowAnimated:YES];
+}
+
++(void)hiddenOnWindowAnimated:(BOOL)animation{
+    [self hiddenHintForView:[UIApplication sharedApplication].keyWindow animated:animation];
+}
+
+/********************* window activity *********************/
+
++(void)makeActivityOnWindow{
+    [self makeActivityWithTitle:nil view:[UIApplication sharedApplication].keyWindow tapIn:NO];
+}
+
++(void)makeActivityOnWindowWithTitle:(NSString*)title{
+    [self makeActivityWithTitle:title view:[UIApplication sharedApplication].keyWindow tapIn:NO];
+}
+
++(void)makeActivityOnWindowWithTitle:(NSString*)title tapIn:(BOOL)tapIn{
+    [self makeActivityWithTitle:title view:[UIApplication sharedApplication].keyWindow tapIn:tapIn];
+}
+
++(void)hiddenOnWidowActivity{
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+}
+
++(void)hiddenOnWindowActivityAnimated:(BOOL)animation{
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:animation];
+}
+
+
+
+/********************* text *********************/
+
++(void)hiddenHintForView:(UIView*)view{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+}
+
++(void)hiddenHintForView:(UIView*)view animated:(BOOL)animation{
+    [MBProgressHUD hideAllHUDsForView:view animated:animation];
+}
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view
+{
+    [self makeHintWithTitle:title view:view durtion:HintDefaultDurtion tapIn:NO];
+}
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view tapIn:(BOOL)tapIn{
+    [self makeHintWithTitle:title view:view durtion:HintDefaultDurtion tapIn:tapIn];
+}
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view durtion:(NSTimeInterval)durtion {
+    [self makeHintWithTitle:title view:view durtion:durtion tapIn:NO];
+}
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view durtion:(NSTimeInterval)durtion tapIn:(BOOL)tapIn{
+    
+    // 移除原来的 所有的 展示
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
+    
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:view];
+    
+    HUD.removeFromSuperViewOnHide = YES;
+    HUD.mode = MBProgressHUDModeText;
+    HUD.margin = 10;
+    HUD.labelFont = [UIFont systemFontOfSize:14];
+    if (title) {
+        HUD.labelText = title;
+    }
+    HUD.cornerRadius = 3;
+    HUD.userInteractionEnabled = !tapIn;
+        
+    [view addSubview:HUD];
+    
+    HUD.delegate = [self shareHelper];
+    
+    [HUD show:YES];
+    [HUD hide:YES afterDelay:durtion];
+}
+
+
+
+
+-(void)hudWasHidden:(MBProgressHUD *)hud{
+    [hud removeFromSuperview];
+    hud = nil;
+}
+
++(instancetype)shareHelper{
+    static MBHudHelper * helper;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (!helper) {
+            helper = [[self alloc]init];
+        }
+    });
+    return helper;
+}
+
+
+@end

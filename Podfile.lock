@@ -1,0 +1,15 @@
+PODS:
+  - KKBaseComponent (0.0.1)
+  - MBProgressHUD (1.0.0)
+
+DEPENDENCIES:
+  - KKBaseComponent
+  - MBProgressHUD
+
+SPEC CHECKSUMS:
+  KKBaseComponent: ea0173b337914515746908b34add1336c3383016
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+
+PODFILE CHECKSUM: 469bd635dfc691017b2df871fc9119fc56a96f84
+
+COCOAPODS: 1.1.0.beta.2

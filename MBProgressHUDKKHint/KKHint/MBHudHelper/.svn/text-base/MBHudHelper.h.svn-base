@@ -1,0 +1,77 @@
+//
+//  MBHudHelper.h
+//  HudDemo
+//
+//  Created by MR.KING on 16/4/4.
+//  Copyright © 2016年 Matej Bukovinski. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
+
+extern CGFloat HintDefaultDurtion;
+
+@interface MBHudHelper : NSObject
+
+
+
+
+
+/********************* activity *********************/
++(void)makeActivityWithTitle:(NSString*)title view:(UIView*)view;
+
++(void)makeActivityWithTitle:(NSString*)title view:(UIView*)view tapIn:(BOOL)tapIn;
+
++(void)hiddenActivityInView:(UIView*)view;
+
++(void)hiddenActivityForView:(UIView*)view;
+
++(void)hiddenActivityForView:(UIView*)view Animated:(BOOL)animation;
+
+
+/********************* window text *********************/
+
++(void)makeVerCodeSendHintOnWindow;
+
++(void)makeHintOnWindowWithTitle:(NSString*)title;
+
++(void)makeHintOnWindowWithTitle:(NSString*)title tapIn:(BOOL)tapIn;
+
++(void)makeHintOnWindowWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion;
+
++(void)makeHintOnWindowWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion tapIn:(BOOL)tapIn;
+
++(void)hiddenHUDOnWindow;
+
++(void)hiddenOnWindowAnimated:(BOOL)animation;
+
+
+/********************* window activity *********************/
+
++(void)makeActivityOnWindow;
+
++(void)makeActivityOnWindowWithTitle:(NSString*)title;
+
++(void)makeActivityOnWindowWithTitle:(NSString*)title tapIn:(BOOL)tapIn;
+
++(void)hiddenOnWidowActivity;
+
++(void)hiddenOnWindowActivityAnimated:(BOOL)animation;
+
+
+
+/********************* text *********************/
+
++(void)hiddenHintForView:(UIView*)view;
+
++(void)hiddenHintForView:(UIView*)view animated:(BOOL)animation;
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view;
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view tapIn:(BOOL)tapIn;
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view durtion:(NSTimeInterval)durtion;
+
++(void)makeHintWithTitle:(NSString *)title view:(UIView*)view durtion:(NSTimeInterval)durtion tapIn:(BOOL)tapIn;
+
+@end

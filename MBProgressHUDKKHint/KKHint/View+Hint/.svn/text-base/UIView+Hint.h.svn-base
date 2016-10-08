@@ -1,0 +1,77 @@
+//
+//  UIView+Hint.h
+//  HudDemo
+//
+//  Created by MR.KING on 16/4/4.
+//  Copyright © 2016年 Matej Bukovinski. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIView (Hint)
+
+-(void)makeHintBlowNavigationBarWithTitle:(NSString *)title;
+-(void)makeHintBlowNavigationBarWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion;
+
+/*********************活动指示器 指示*********************/
+
+
+/**
+ *  展示指示器
+ *  默认不可穿透点击
+ */
+-(void)makeActivity;
+/**
+ *  展示指示器
+ *  默认不可穿透点击
+ *  @param title title
+ */
+-(void)makeActivityWithTitle:(NSString*)title;
+
+
+/**
+ *  展示指示器
+ *  默认 自定义 穿透点击
+ *  @param title title
+ */
+-(void)makeActivityWithTitle:(NSString*)title tapIn:(BOOL)tapIn;
+
+
+
+-(void)hiddenActivity;
+
+
+
+/*********************文字提示*********************/
+/**
+ *  展示指示器
+ *  默认不可穿透点击
+ *  @param title title
+ */
+-(void)makeHintWithTitle:(NSString*)title;
+
+/**
+ *  展示指示器
+ *  默认不可穿透点击
+ *  自定义 展示时间
+ *  @param title title
+ */
+-(void)makeHintWithTitle:(NSString*)title durtion:(NSTimeInterval)durtion;
+
+/**
+ *  展示指示器
+ *  默认 自定义 穿透点击
+ *  @param title title
+ */
+-(void)makeHintWithTitle:(NSString*)title tapIn:(BOOL)tapIn;
+
+/**
+ *  展示 文字
+ *
+ *  @param title   title
+ *  @param durtion durtion
+ *  @param tapIn   穿透点击
+ */
+-(void)makeHintWithTitle:(NSString *)title durtion:(NSTimeInterval)durtion tapIn:(BOOL)tapIn;
+-(void)hiddenHint;
+@end
