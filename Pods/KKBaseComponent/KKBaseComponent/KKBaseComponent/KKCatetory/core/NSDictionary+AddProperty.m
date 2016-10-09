@@ -1,17 +1,16 @@
 //
 //  NSDictionary+AddProperty.m
-//  PZJY
+//  KK
 //
 //  Created by MR.KING on 16/3/1.
-//  Copyright © 2016年 EBJ. All righUI reserved.
+//  Copyright © 2016年 KK. All righUI reserved.
 //
 
-
-#ifndef NSDictionary_KKAddProperty_m
-#define NSDictionary_KKAddProperty_m
 
 #import "NSDictionary+AddProperty.h"
 #import <objc/runtime.h>
+
+#import "UIColor+KKMethod.h"
 
 @implementation NSDictionary (AddProperty)
 
@@ -24,18 +23,13 @@
 @dynamic  sign;
 @dynamic roleAcc;
 
-
 -(NSString *)sendTime{
     return  [self objectForKey:@"sendTime"];
 }
 
-
-
 -(NSString *)rspCode{
     return  [self objectForKey:@"rspCode"];
 }
-
-
 
 -(NSString *)rspMsg{
     if ([[self objectForKey:@"rspMsg"] length] == 0) {
@@ -69,24 +63,17 @@
     return [self objectForKey:@"serKey"];
 }
 
-
-
 -(NSString *)role{
     return  [self objectForKey:@"role"];
 }
-
-
 
 -(NSString *)signType{
     return  [self objectForKey:@"signType"];;
 }
 
-
-
 -(NSString *)sign{
     return  [self objectForKey:@"sign"];
 }
-
 
 -(NSString *)roleAcc{
     return  [self objectForKey:@"roleAcc"];;
@@ -96,4 +83,56 @@
 @end
 
 
-#endif
+@implementation NSDictionary (KKKey)
+
+
+- (CGFloat)floatForKey:(NSString *)key;
+{
+    return self[key] ? [self[key] floatValue] : 0.f;
+}
+
+- (NSNumber *)opacityForKey:(NSString *)key
+{
+    return self[key] ? @([self[key] floatValue]) : nil;
+}
+
+- (UIColor *)strokeColorForKey:(NSString *)key;
+{
+    return [UIColor colorFromHexString:self[key]];
+}
+
+- (UIColor *)fillColorForKey:(NSString *)key;
+{
+    return [UIColor colorFromHexString:self[key] ?: @"#000000"];
+}
+
+- (NSArray *)dashArrayForKey:(NSString *)key;
+{
+    NSMutableArray *floatValues = NSMutableArray.new;
+    for (NSString *value in [self[key] componentsSeparatedByString:@","]) {
+        [floatValues addObject:@(value.floatValue)];
+    }
+    return floatValues.count == 0 ? nil : floatValues.copy;
+}
+
+- (CGFloat)strokeWeightForKey:(NSString *)key;
+{
+    return self[key] ? [self[key] floatValue] : 1.f;
+}
+
+- (CGLineJoin)lineJoinForKey:(NSString *)key;
+{
+    return [self[key] isEqualToString:@"round"] ? kCGLineJoinRound : [self[key] isEqualToString:@"square"] ? kCGLineJoinBevel : kCGLineJoinMiter;
+}
+
+- (CGLineCap)lineCapForKey:(NSString *)key;
+{
+    return [self[key] isEqualToString:@"round"] ? kCGLineCapRound : [self[key] isEqualToString:@"square"] ? kCGLineCapSquare : kCGLineCapButt;
+}
+
+- (CGFloat)miterLimitForKey:(NSString *)key;
+{
+    return self[key] ? [self[key] floatValue] : 10.f;
+}
+
+@end

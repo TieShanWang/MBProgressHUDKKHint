@@ -3,44 +3,14 @@
 //  SWXY
 //
 //  Created by MR.KING on 15/12/30.
-//  Copyright © 2015年 EBJ. All righUI reserved.
+//  Copyright © 2015年 KK. All righUI reserved.
 //
 
 #import "NSString+KKCheckValid.h"
 
+#import "NSString+KKMethod.h"
+
 @implementation NSString (KKCheckValid)
-
-
-
--(NSString *)kk_ridSpace{
-    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-}
-
--(BOOL)kk_ctStr:(NSString *)str{
-    return kkContainStr(self, str, NSCaseInsensitiveSearch);
-}
-
--(BOOL)kk_ctStrStrit:(NSString*)otherS{
-    return kkContainStr(self, otherS, NSLiteralSearch);
-}
-
-static BOOL kkContainStr(NSString * str ,NSString * beCheck, NSStringCompareOptions options){
-    NSRange range = [str rangeOfString:beCheck options:options];
-    if (range.location == NSNotFound) {
-        return NO;
-    }
-    return YES;
-}
-
-
--(BOOL)isKk_Empty{
-    return self.isKk_lenZero;
-}
-
--(BOOL)isKk_lenZero{
-    return  ([self length] == 0);
-}
-
 
 -(BOOL)isKk_ValidURL{
     NSRange range = [self rangeOfString:@"http" options:NSCaseInsensitiveSearch];

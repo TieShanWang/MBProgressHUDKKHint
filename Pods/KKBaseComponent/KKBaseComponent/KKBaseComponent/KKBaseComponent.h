@@ -9,18 +9,32 @@
 #ifndef KKBaseComponent_h
 #define KKBaseComponent_h
 
-#import "KKTool.h"
-#import "KKBaseModel.h"
+#import "KKFactory.h"
 
-#import "NSData+ImageContentType.h"
+#import "KKTool.h"
+
+#import "NSData+KKAdd.h"
+
 #import "NSDictionary+AddProperty.h"
 
 #import "NSString+KKCheckValid.h"
-#import "NSString+KKTool.h"
+#import "NSString+KKMethod.h"
+
+#import "NSBundle+KKMethod.h"
+
+#import "UIApplication+KKMethod.h"
+
+#import "UIDeveice+KKMethod.h"
+
+#import "CALayer+KKMethod.h"
+
+#import "UIColor+KKMethod.h"
 
 #import "UIAlertController+KKAdd.h"
-#import "UIButton+Indicator.h"
-#import "UIView+KKFrame.h"
+
+#import "UIButton+KKAdd.h"
+
+#import "UIView+KKMethod.h"
 
 #import "KKMacro.h"
 

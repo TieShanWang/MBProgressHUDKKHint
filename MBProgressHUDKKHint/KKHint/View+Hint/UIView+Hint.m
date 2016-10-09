@@ -19,18 +19,18 @@
 
 
 
-@interface MBProgressHUD (KKIdentity)
-@property(nonatomic,copy)NSString * identity;//标记身份
+@interface MBProgressHUD (KK_view_Identity)
+@property(nonatomic,copy)NSString * kk_view_identity;//标记身份
 @end
 
-@implementation MBProgressHUD (KKIdentity)
+@implementation MBProgressHUD (KK_view_Identity)
 
--(void)setIdentity:(NSString *)identity{
-    objc_setAssociatedObject(self, @"identity", identity, OBJC_ASSOCIATION_COPY_NONATOMIC);
+-(void)setKk_view_identity:(NSString *)kk_view_identity{
+    objc_setAssociatedObject(self, @"kk_view_identity", kk_view_identity, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
--(NSString *)identity{
-    return objc_getAssociatedObject(self, @"identity");
+-(NSString *)kk_view_identity{
+    return objc_getAssociatedObject(self, @"kk_view_identity");
 }
 
 @end
@@ -167,7 +167,7 @@
 
 -(void)hiddenAllHintIdentity:(NSString*)identity animated:(BOOL)animation{
     for (MBProgressHUD * hud in [MBProgressHUD allHUDsForView:self]) {
-        if ([hud.identity isEqualToString:identity]) {
+        if ([hud.kk_view_identity isEqualToString:identity]) {
             [self hiddenHUD:hud animation:animation];
             return;
         }

@@ -1,5 +1,5 @@
 PODS:
-  - KKBaseComponent (0.0.1)
+  - KKBaseComponent (0.1.0)
   - MBProgressHUD (0.9.2)
 
 DEPENDENCIES:
@@ -7,7 +7,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
 
 SPEC CHECKSUMS:
-  KKBaseComponent: ea0173b337914515746908b34add1336c3383016
+  KKBaseComponent: faa16d0f4911d810da2afe9824cd722485a179ad
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
 
 PODFILE CHECKSUM: c853b8124cb12fb140d88d4dc589a4d27657ff84

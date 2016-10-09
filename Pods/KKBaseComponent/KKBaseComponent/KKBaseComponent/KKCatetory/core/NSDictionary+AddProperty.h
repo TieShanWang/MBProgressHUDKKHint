@@ -1,15 +1,15 @@
 //
 //  NSDictionary+AddProperty.h
-//  PZJY
+//  KK
 //
 //  Created by MR.KING on 16/3/1.
-//  Copyright © 2016年 EBJ. All righUI reserved.
+//  Copyright © 2016年 KK. All righUI reserved.
 //
 
-#ifndef NSDictionary_KKAddProperty_h
-#define NSDictionary_KKAddProperty_h
 
 #import <Foundation/Foundation.h>
+
+#import <UIKit/UIKit.h>
 
 @interface NSDictionary (AddProperty)
 
@@ -37,4 +37,15 @@
 
 @end
 
-#endif
+
+@interface NSDictionary (KKKey)
+- (CGFloat)floatForKey:(NSString *)key;
+- (NSNumber *)opacityForKey:(NSString *)key;
+- (UIColor *)strokeColorForKey:(NSString *)key;
+- (UIColor *)fillColorForKey:(NSString *)key;
+- (CGFloat)strokeWeightForKey:(NSString *)key;
+- (NSArray *)dashArrayForKey:(NSString *)key;
+- (CGLineJoin)lineJoinForKey:(NSString *)key;
+- (CGLineCap)lineCapForKey:(NSString *)key;
+- (CGFloat)miterLimitForKey:(NSString *)key;
+@end

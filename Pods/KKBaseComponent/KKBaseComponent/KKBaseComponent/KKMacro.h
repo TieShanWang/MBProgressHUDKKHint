@@ -45,4 +45,14 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #define KScreenWidth KScreenSize.width
 #define KScreenHeight KScreenSize.height
 
+#define KKWeak(obj) __weak typedof(obj) weak##obj = obj;
+#define KKWeakSelf KKWeak(self)
+
+
+#define HEXCOLOR(c)                         [UIColor colorWithRed:((c>>16)&0xFF)/255.0 green:((c>>8)&0xFF)/255.0 blue:(c&0xFF)/255.0 alpha:1.0]
+
+
+#define RGBCOLOR(r, g, b)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBACOLOR(r, g, b, a)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+
 #endif /* KKMacro_h */
